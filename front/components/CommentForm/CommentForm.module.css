@@ -1,0 +1,10 @@
+.form {
+    position: relative;
+    margin: 0;
+}
+
+.button {
+    position: absolute;
+    right: 0;
+    bottom: -40;
+}
