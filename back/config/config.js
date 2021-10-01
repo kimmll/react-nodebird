@@ -12,16 +12,16 @@ module.exports = {
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": process.env.DB_PASSWORD,
     "database": "dreamsns",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres"
   },
   "production": {
     "username": "root",
-    "password": null,
+    "password": process.env.DB_PASSWORD,
     "database": "dreamsns",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres"
   }
 }
