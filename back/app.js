@@ -37,7 +37,7 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 app.use(cors({
-    origin : ['http://localhost:3000', 'nodebird.com', 'http://52.78.111.196/'],
+    origin : ['http://localhost:3000', 'nodebird.com', 'http://52.78.111.196'],
     credentials : true, // credentials : true로 해야 서로 다른 도메인간 쿠키가 전달됨
 }))
 
@@ -67,6 +67,6 @@ app.use('/posts', postsRouter)
 app.use('/user', userRouter)
 app.use('/hashtag', hashtagRouter)
 
-app.listen(3065, () => {
+app.listen(80, () => {
     console.log('서버 실행 중')
 })
