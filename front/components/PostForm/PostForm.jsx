@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import styles from './PostForm.module.css'
 import { ADD_POST_REQUEST, UPLOAD_IMAGES_REQUEST, REMOVE_IMAGE } from '../../reducers/post'
 import useInput from '../../hooks/useInput';
+import { backUrl } from '../../config/config.js'
 
 const PostForm = () => {
     const dispatch = useDispatch() // dispatch 설정
@@ -73,7 +74,7 @@ const PostForm = () => {
             <div>
                 {imagePaths.map( (v, i) => (
                     <div key={v} className={styles.div}>
-                        <img src={`http://localhost:3065/${v}`} className={styles.img} alt={v} />
+                        <img src={`${backUrl}/${v}`} className={styles.img} alt={v} />
                         <div>
                             <Button onClick={onRemoveImage(i)}>제거</Button> {/* map안에 callback 함수를 만들고 싶으면 고차함수로 */}
                         </div>
