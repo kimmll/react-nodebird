@@ -37,7 +37,7 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 app.use(cors({
-    origin : ['http://localhost:3000', 'nodebird.com', 'http://52.78.111.196'],
+    origin : ['http://localhost:3000', 'nodebird.com', 'http://15.164.84.72'],
     credentials : true, // credentials : true로 해야 서로 다른 도메인간 쿠키가 전달됨
 }))
 
