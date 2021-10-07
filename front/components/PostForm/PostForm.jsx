@@ -73,7 +73,7 @@ const PostForm = () => {
             <div>
                 {imagePaths.map( (v, i) => (
                     <div key={v} className={styles.div}>
-                        <img src={v} className={styles.img} alt={v} />
+                        <img src={v.replace(/\/thumb\//, '/original/')} className={styles.img} alt={v} />
                         <div>
                             <Button onClick={onRemoveImage(i)}>제거</Button> {/* map안에 callback 함수를 만들고 싶으면 고차함수로 */}
                         </div>
