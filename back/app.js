@@ -37,7 +37,7 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 app.use(cors({
-    origin : ['http://localhost:3000', 'nodebird.com', 'http://15.164.84.72'],
+    origin : ['http://localhost:3000', 'http://dreamnodebird.ga', 'http://15.164.84.72'],
     credentials : true, // credentials : true로 해야 서로 다른 도메인간 쿠키가 전달됨
 }))
 
@@ -49,7 +49,12 @@ app.use(cookieParser(process.env.COOKIE_SECRET))
 app.use(session({
     saveUninitialized : false,
     resave : false,
-    secret : process.env.COOKIE_SECRET
+    secret : process.env.COOKIE_SECRET,
+    cookie : {
+        httpOnly : true,
+        secure : false,
+        domain : process.env.NODE_ENV === 'production' && '.dreamnodebird.ga'
+    }
 }))
 app.use(passport.initialize())
 app.use(passport.session())

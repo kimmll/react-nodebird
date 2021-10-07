@@ -1,1 +1,1 @@
-export const backUrl = 'http://3.35.183.105'
+export const backUrl = 'http://api.dreamnodebird.ga'
