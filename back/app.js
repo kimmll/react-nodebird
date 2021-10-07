@@ -32,14 +32,17 @@ if(process.env.NODE_ENV === 'production'){
     app.use(morgan('combined'))
     app.use(hpp())
     app.use(helmet())
+    app.use(cors({
+        origin : ['http://dreamnodebird.ga'],
+        credentials : true, // credentials : true로 해야 서로 다른 도메인간 쿠키가 전달됨
+    }))
 } else {
     app.use(morgan('dev'))
+    app.use(cors({
+        origin : true,
+        credentials : true, // credentials : true로 해야 서로 다른 도메인간 쿠키가 전달됨
+    }))
 }
-
-app.use(cors({
-    origin : ['http://localhost:3000', 'http://dreamnodebird.ga', 'http://15.164.84.72'],
-    credentials : true, // credentials : true로 해야 서로 다른 도메인간 쿠키가 전달됨
-}))
 
 app.use('/', express.static(path.join(__dirname, 'uploads')))
 app.use(express.json()) // axios로 데이터를 보낼때. front에서 json형식의 데이터를 보냈을 때 req.body에 json형식으로 데이터를 저장
