@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { PlusOutlined } from '@ant-design/icons';
 import ImagesZoom from '../imagesZoom';
 import styles from './PostImages.module.css';
-import { backUrl } from '../../config/config.js'
 
 const PostImages = ({ images }) => {
     
@@ -20,7 +19,7 @@ const PostImages = ({ images }) => {
     if(images.length === 1){
         return (
             <>
-                <img role='presentation' src={`${backUrl}/${images[0].src}`} alt={images[0].src} onClick={onZoom} />
+                <img role='presentation' src={`${images[0].src}`} alt={images[0].src} onClick={onZoom} />
                 {showImagesZoom && <ImagesZoom images={images} onClose={onClose} />}
             </>
         )
@@ -29,8 +28,8 @@ const PostImages = ({ images }) => {
     if(images.length === 2) {
         return (
             <>
-                <img role='presentation' className={styles.img} src={`${backUrl}/${images[0].src}`} alt={images[0].src} onClick={onZoom} />
-                <img role='presentation' className={styles.img} src={`${backUrl}/${images[1].src}`} alt={images[1].src} onClick={onZoom} />
+                <img role='presentation' className={styles.img} src={`${images[0].src}`} alt={images[0].src} onClick={onZoom} />
+                <img role='presentation' className={styles.img} src={`${images[1].src}`} alt={images[1].src} onClick={onZoom} />
                 {showImagesZoom && <ImagesZoom images={images} onClose={onClose} />}
             </>
         )
@@ -39,7 +38,7 @@ const PostImages = ({ images }) => {
     return(
         <>
             <div>
-                <img role='presentation' className={styles.moreimg} src={`${backUrl}/${images[0].src}`} alt={images[0].src} onClick={onZoom} />
+                <img role='presentation' className={styles.moreimg} src={`${images[0].src}`} alt={images[0].src} onClick={onZoom} />
                 <div
                     role='presentation'
                     className={styles.div}
