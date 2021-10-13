@@ -160,7 +160,7 @@ router.post('/login', isNotLoggedIn, (req, res, next) => { // Post /user/login
         if(info) { // 로그인 실패했을 때
             return res.status(401).send(info.reason)
         }
-        return req.login(user, async (loginErr) => { // 실행후 index의 serializeUser 실행
+        return req.login(user, async (loginErr) => { // login()은 passport로그인 실행후 index의 serializeUser 실행
             if(loginErr) {
                 console.log(loginErr)
                 return next(loginErr)
@@ -197,7 +197,7 @@ router.post('/', isNotLoggedIn, async (req, res, next) => { // POST/user/
             }
         })
         if (exUser) {
-            return res.status(403).send('이미 사용중인 아이디입니다.')
+            return res.status(403).send('이미 사용중인 아이디입니다.') // return을 붙이지 않을 경우 res가 두번 보내져서 에러발생, 400번대 에러는 클라이언트쪽 에러
             
         }
         // 요청/응답은 헤더(상태, 용량, 시간, 쿠키)와 바디(데이터)로 구성
@@ -211,7 +211,7 @@ router.post('/', isNotLoggedIn, async (req, res, next) => { // POST/user/
         res.status(201).send('ok')
     } catch(error) {
         console.error(error)
-        next(error) // status 500 (server error)
+        next(error) // status 500 (server error), 서버쪽 에러
     }
 })
 

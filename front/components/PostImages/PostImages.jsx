@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { PlusOutlined } from '@ant-design/icons';
 import ImagesZoom from '../imagesZoom';
 import styles from './PostImages.module.css';
+//import { backUrl } from '../../config/config';
 
 const PostImages = ({ images }) => {
     

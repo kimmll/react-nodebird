@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import styles from './PostForm.module.css'
 import { ADD_POST_REQUEST, UPLOAD_IMAGES_REQUEST, REMOVE_IMAGE } from '../../reducers/post'
 import useInput from '../../hooks/useInput';
+//import { backUrl } from '../../config/config';
 
 const PostForm = () => {
     const dispatch = useDispatch() // dispatch 설정
@@ -27,7 +28,6 @@ const PostForm = () => {
             formData.append('image', p)
         })
         formData.append('content', text) // 폼데이터에 텍스트 입력값 넣음
-        console.log('formData는 뭘까요? : ', formData)
         return dispatch({
             type : ADD_POST_REQUEST, // 트윗작성 요청
             data : formData
@@ -73,6 +73,7 @@ const PostForm = () => {
             <div>
                 {imagePaths.map( (v, i) => (
                     <div key={v} className={styles.div}>
+                        {/*<img src={`${backUrl}/${v}`} className={styles.img} alt={v} />*/}
                         <img src={v.replace(/\/thumb\//, '/original/')} className={styles.img} alt={v} />
                         <div>
                             <Button onClick={onRemoveImage(i)}>제거</Button> {/* map안에 callback 함수를 만들고 싶으면 고차함수로 */}

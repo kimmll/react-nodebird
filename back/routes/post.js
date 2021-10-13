@@ -93,8 +93,9 @@ router.post('/', isLoggedIn, upload.none(), async (req, res, next) => { // POST/
 })
 
 router.post('/images', isLoggedIn, upload.array('image'), async(req, res, next) => { // POST/post/images
-    console.log(req.files)
-    res.json(req.files.map(v => v.location.replace(/\/original\//, '/thumb/')))
+    // console.log(req.files)
+    // res.json(req.files.map(v => v.location.replace(/\/original\//, '/thumb/')))
+    res.json(req.files.map(v => v.filename))
 })
 
 router.get('/:postId', async (req, res, next) => { // POST/post
@@ -208,7 +209,7 @@ router.post('/:postId/retweet', isLoggedIn, async (req, res, next) => { // POST/
 
 router.post('/:postId/comment', isLoggedIn, async (req, res, next) => { // POST/post
     try {
-        const post = await Post.findOne({
+        const post = await Post.findOne({ // 게시글 존재 유무 체크
             where : {id : req.params.postId}
         })
         if(!post) {
@@ -236,7 +237,7 @@ router.post('/:postId/comment', isLoggedIn, async (req, res, next) => { // POST/
 router.patch('/:postId/like', isLoggedIn, async(req, res, next) => { // PATCH /post/1/like
     try {
         const post = await Post.findOne({
-            where : { id : req.params.postId }
+            where : { id : req.params.postId },
         })
         if(!post) {
             return res.status(403).send('게시글이 존재하지 않습니다.')

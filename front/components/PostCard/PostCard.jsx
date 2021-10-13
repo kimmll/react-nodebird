@@ -120,8 +120,8 @@ const PostCard = ({ post }) => {
                     </Popover> 
                 ]} 
                 title = {post.RetweetId ? `${post.User.nickname}님이 리트윗했습니다.` : null} // 게시글이 리트윗 되었을 경우 게시글 상단에 리트윗 메세지 출력
-                extra = { id && <FollowButton post={post} />} // 로그인이 되어 있을 경우 FollowButton 컴포넌트에 게시글 정보를 props로 넘김
-            >
+                extra = { id && <FollowButton post={post} />} // 로그인이 되어 있을 경우 FollowButton 컴포넌트에 게시글 정보를 props로 넘김  
+            > 
                 {post.RetweetId && post.Retweet // 게시글에 retweetId와 retweet 정보가 있을 경우
                 ? (
                     <Card // 카드안에 카드를 만듬
@@ -154,6 +154,7 @@ const PostCard = ({ post }) => {
                     </>
                 )}
             </Card>
+            <Card.Meta description={`총 ${post.Likers.length} 명이 이 글을 좋아합니다.`} className={styles.meta}/>
             {commentFormOpened && ( // 댓글 작성 아이콘을 클릭했을 경우 commentFormOpened = true
                 <div>
                     <CommentForm post={post}/> {/* CommentForm 컴포넌트에 post 정보 전달 */}
